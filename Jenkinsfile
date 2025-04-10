@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Build & Test') {
             steps {
+                sh 'cd myapps'
                 sh 'mvn clean package'
             }
         }
