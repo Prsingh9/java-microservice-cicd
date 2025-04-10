@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build & Test') {
     steps {
-        dir('myapps') {
+        dir('myapp') {
             sh 'mvn clean package'
         }
     }
