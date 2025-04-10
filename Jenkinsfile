@@ -7,11 +7,13 @@ pipeline {
 
     stages {
         stage('Build & Test') {
-            steps {
-                sh 'cd myapp'
-                sh 'mvn clean package'
-            }
+    steps {
+        dir('myapps') {
+            sh 'mvn clean package'
         }
+    }
+}
+
 
         stage('Docker Build & Push') {
             when {
