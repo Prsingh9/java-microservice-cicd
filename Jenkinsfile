@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "prabsin/myapp"
+        K8S= credentials('config')
     }
 
     stages {
@@ -21,7 +22,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('', 'dockerhub-credentials-id') {
+                    docker.withRegistry('', 'docker-hub-credentials') {
                         def image = docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}")
                         image.push()
                         image.push('latest')
