@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('', 'docker-hub-credentials') {
+                    withDockerRegistry([credentialsId: 'docker-hub-credentials', url: '']) {
                         def image = docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}")
                         image.push()
                         image.push('latest')
