@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(8081), 0);
         server.createContext("/", new HelloHandler());
-        server.setExecutor(null); // creates a default executor
+        server.setExecutor(null); 
         server.start();
         System.out.println("Server started on port 8081...");
     }
@@ -20,7 +20,7 @@ public class App {
     static class HelloHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
-            String response = "Hello from Dockerized Java App on Port 8081!";
+            String response = "Hello from Java App on Port 8081!";
             exchange.sendResponseHeaders(200, response.length());
             OutputStream os = exchange.getResponseBody();
             os.write(response.getBytes());
